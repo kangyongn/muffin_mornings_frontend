@@ -1,5 +1,6 @@
 class Muffin {
-  constructor({calorie, flavor, image_url}) {
+  constructor({id, calorie, flavor, image_url}) {
+    this.id = id;
     this.calorie = calorie;
     this.flavor = flavor;
     this.image_url = image_url;
@@ -10,8 +11,11 @@ class Muffin {
   render() {
     return `
     <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle uk-card-hover grow">
-          <img src=${this.image_url}></img>
+        <div data-id="${this.id}" class="uk-flex uk-flex-middle uk-box-shadow-large uk-padding uk-inline-clip uk-transition-toggle">
+          <img class="uk-border-rounded" src=${this.image_url}></img>
+          <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+               <p class="uk-h4 uk-margin-remove uk-text-center">${this.flavor}</p>
+           </div>
         </div>
     </div>
     `
