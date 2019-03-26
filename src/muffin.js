@@ -10,7 +10,7 @@ class Muffin {
   render() {
     return `
     <div>
-        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" style="height: 100px">
+        <div class="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle uk-card-hover grow">
           <img src=${this.image_url}></img>
         </div>
     </div>
