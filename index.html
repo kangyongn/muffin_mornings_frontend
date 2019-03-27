@@ -7,64 +7,21 @@
   <title>Muffin Morning</title>
   <!-- UIkit CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/css/uikit.min.css" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <!-- UIkit JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.3/js/uikit-icons.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 
 <body class="container">
 
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Muffin Morning</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#modal-full" uk-toggle>Login</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+  <div id="muffin-list" class="uk-child-width-1-3@m" uk-grid="masonry: true"></div>
 
-  <div id="muffin-list" class=" uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid="masonry: true"></div>
-  </div>
-  <div id="modal-full" class="uk-modal-full" uk-modal>
-    <div class="uk-modal-dialog">
-      <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-      <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
-        <div class="uk-background-cover"
-          style="background-image: url('https://scontent-sin.cdninstagram.com/vp/6dfc8fed0eeed2264b73166224198554/5D2EC734/t51.2885-15/e35/49544966_391995498039184_4608329770984902723_n.jpg?_nc_ht=instagram.ffra1-1.fna.fbcdn.net&se=7&ig_cache_key=MTk1Mzg5MzI0NDg1NTA3NzgyNg%3D%3D.2');"
-          uk-height-viewport></div>
-        <div class="uk-padding-large">
-          <h1>Login</h1>
-          <form>
-            <div class="uk-margin">
-              <div class="uk-inline">
-                <span class="uk-form-icon" uk-icon="icon: user"></span>
-                <input class="uk-input" type="text">
-              </div>
-            </div>
-            <div class="uk-margin">
-              <div class="uk-inline">
-                <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                <input class="uk-input" type="text">
-              </div>
-            </div>
-            <button class="uk-button uk-button-default">Login</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 <script src="src/muffin.js" charset="utf-8"></script>
 <script src="src/muffinAdaptor.js" charset="utf-8"></script>
+<script src="src/order.js" charset="utf-8"></script>
+<script src="src/orderAdaptor.js" charset="utf-8"></script>
 <script src="src/index.js" charset="utf-8"></script>
 
 </html>
