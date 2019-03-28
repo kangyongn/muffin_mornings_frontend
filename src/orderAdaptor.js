@@ -14,4 +14,17 @@ class OrderAdaptor {
     })
     .then(res => res.json())
   }
+  static patchOrder(id, likes) {
+    return fetch(`http://localhost:3000/api/v1/orders/${id}`, {
+      method: 'PATCH',
+      headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        likes: likes
+      })
+    })
+    .then(res => res.json())
+  }
 }

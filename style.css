@@ -1,3 +1,160 @@
 .container {
   margin: 50px 100px;
 }
+
+#animate-logo:hover {
+    animation: shake 0.7s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+$color: #ff007e;
+body{
+  background:#fff;
+}
+.btn{
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  margin:auto;
+  width:50px;
+  height:50px;
+  border:solid 3px transparent;
+  text-align:center;
+  vertical-align:middle;
+  font-size:1.6rem;
+  line-height:2.8rem;
+  color:#fff;
+  border-radius:50%;
+  text-decoration:none;
+  transition:all 300ms ease-in-out;
+  outline:none;
+  background: $color;
+  i{
+    position:relative;
+    z-index:1;
+    transform-origin:bottom;
+  }
+  &:after{
+    display:block;
+    content:'';
+    width:44px;
+    height:44px;
+    background:$color;
+    position:absolute;
+    top:0;
+    left:0;
+    border-radius:50%;
+    z-index:0;
+    opacity:0;
+  }
+  &:before{
+    display:block;
+    content:'\f004';
+    font-family:"Font Awesome 5 Free";
+    transition:all 300ms ease-in-out;
+    position:absolute;
+    margin:auto;
+    left:0;
+    right:0;
+    text-align:center;
+    opacity:0;
+    color:$color;
+    font-size:1.2rem;
+  }
+  &:hover{
+    background:$color;
+    box-shadow:0 10px 50px rgba(0,0,0,0.35);
+    cursor:pointer;
+    i{
+      animation:shakeIt 300ms ease-in-out;
+    }
+  }
+  //
+  //when clicked
+  //
+  &__liked{
+    border-color:$color;
+    background:#fff;
+    color:$color;
+    &:after{
+      animation:scaleCircle .3s ease-in-out;
+    }
+    &:before{
+      animation:heartBit 1s ease-in-out .3s;
+    }
+    &:hover{
+      background:$color;
+      color:#fff;
+    }
+  }
+}
+@keyframes shakeIt{
+  0%{
+    transform:rotate(0);
+  }
+  10%{
+    transform:rotate(10deg);
+  }
+  25%{
+    transform:rotate(-10deg);
+  }
+  50%{
+    transform:rotate(10deg);
+  }
+  75%{
+    transform:rotate(-10deg);
+  }
+  100%{
+    transform:rotate(0);
+  }
+}
+@keyframes scaleCircle{
+  0%{
+    opacity:0;
+    z-index:1;
+  }
+  50%{
+    transform:scale(2);
+    opacity:.7;
+  }
+  100%{
+    opacity:0;
+  }
+}
+@keyframes heartBit{
+  0%{
+    top:0;
+    opacity:0;
+  }
+  25%{
+    top:-50px;
+    opacity:1;
+  }
+  35%{
+    top:-40px;
+  }
+  55%{
+    top:-50px;
+  }
+  100%{
+    top:-80px;
+    opacity:0;
+  }
+}

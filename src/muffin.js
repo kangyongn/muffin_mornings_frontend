@@ -4,7 +4,7 @@ class Muffin {
     this.calorie = calorie;
     this.flavor = flavor;
     this.image_url = image_url;
-    this.orders = orders
+    this.orders = orders;
 
     Muffin.all.push(this);
   }
@@ -16,6 +16,9 @@ class Muffin {
       <div class="uk-card-media-top">
         <div class="uk-card-badge uk-label">${this.calorie}</div>
           <img href="#modal-full-${this.id}" uk-toggle class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" data-muffin-id="${this.id}" src="${this.image_url}" alt="">
+          <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
+               <p class="uk-h4 uk-margin-remove uk-text-center">${this.flavor}</p>
+           </div>
         </div>
       </div>
     </div>
@@ -25,7 +28,7 @@ class Muffin {
 
   renderModal() {
     return `
-    <div id="modal-full-${this.id}" class="uk-modal-full" uk-modal>
+    <div id="modal-full-${this.id}" data-event="false" class="uk-modal-full" uk-modal>
         <div class="uk-modal-dialog">
             <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
             <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
@@ -52,13 +55,12 @@ class Muffin {
                         </div>
                       </div>
                       <div class="uk-margin">
-                        <textarea class="uk-textarea" name="review" rows="5" placeholder="Review"></textarea>
+                        <textarea class="uk-textarea" name="review" placeholder="Review"></textarea>
                       </div>
                       <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Review</button>
                       </fieldset>
                     </form>
-                    <section id="review-section">
-                    </section>
+                    <section id="review-section" uk-overflow-auto></section>
                 </div>
             </div>
         </div>
