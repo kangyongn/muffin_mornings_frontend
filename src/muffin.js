@@ -14,7 +14,7 @@ class Muffin {
     <div>
     <div data-muffin-id="${this.id}" id="muffin-card" class="uk-card uk-card-default uk-box-shadow-large uk-border-rounded uk-inline-clip uk-transition-toggle" tabindex="0">
       <div class="uk-card-media-top">
-        <div class="uk-card-badge uk-label">${this.calorie}</div>
+        <div class="uk-card-badge uk-label">${this.calorie} Calories</div>
           <img href="#modal-full-${this.id}" uk-toggle class="uk-border-rounded uk-transition-scale-up uk-transition-opaque" data-muffin-id="${this.id}" src="${this.image_url}" alt="">
           <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
                <p class="uk-h4 uk-margin-remove uk-text-center">${this.flavor}</p>
