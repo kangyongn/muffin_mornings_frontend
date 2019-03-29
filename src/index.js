@@ -1,6 +1,6 @@
 const muffinDiv = document.querySelector('#muffin-list')
 const newModal = document.querySelector('#new-muffin')
-
+const loginLi = document.querySelector('li#login')
 
 // primary fetch.
 MuffinAdaptor.getMuffins().then(muffins => {
@@ -13,12 +13,29 @@ MuffinAdaptor.getMuffins().then(muffins => {
   })
 })
 
+// login function.
+loginLi.addEventListener('click', function(event){
+  const loginModal = document.querySelector('div#login')
+
+  loginModal.addEventListener('submit', function(event) {
+    event.preventDefault();
+    loginLi.querySelector('a').innerHTML = `<span class="uk-icon uk-margin-small-right" uk-icon="icon: user"></span> ${event.target.name.value}`
+    loginLi.dataset.name = event.target.name.value
+    UIkit.modal(document.querySelector('div#login')).hide()
+  })
+})
+
+
 // primary event listener for click on muffin image.
 muffinDiv.addEventListener('click', function(event) {
   if(event.target.tagName === 'IMG') {
     const muffinId = parseInt(event.target.dataset.muffinId)
     const modalTag = document.querySelector(`#modal-full-${muffinId}`)
     const muffin = Muffin.all.find(muffin => muffin.id === muffinId)
+
+    if(!!loginLi.dataset.name) {
+      modalTag.querySelector('#name-input').value= loginLi.dataset.name
+    }
 
     if(modalTag.dataset.event === "false") {
       modalTag.dataset.event = "true"
@@ -33,17 +50,32 @@ muffinDiv.addEventListener('click', function(event) {
       // patch likes function.
       modalTag.querySelector('#review-section').addEventListener('click', function(event) {
         if(!!event.target.closest('i')) {
-          let updatedLikes = parseInt(event.target.closest('#likes').dataset.likes) + 1
-          let orderId = parseInt(event.target.closest('article').dataset.orderId)
-          OrderAdaptor.patchOrder(orderId, updatedLikes).then(orderObject => {
-            if(!!orderObject){
-              Order.all.find(order => order.id === orderObject.id).likes = updatedLikes
-              console.log(Order.all);
-              event.target.closest('#likes').dataset.likes = updatedLikes
-              event.target.closest('ul').querySelector('#like-counter').innerText = `${updatedLikes} Likes`
+          if(event.target.closest('i').id === "likes") {
+            let updatedLikes = parseInt(event.target.closest('#likes').dataset.likes) + 1
+            let orderId = parseInt(event.target.closest('article').dataset.orderId)
+            OrderAdaptor.patchOrder(orderId, updatedLikes).then(orderObject => {
+              if(!!orderObject){
+                Order.all.find(order => order.id === orderObject.id).likes = updatedLikes
+                event.target.closest('#likes').dataset.likes = updatedLikes
+                event.target.closest('ul').querySelector('#like-counter').innerText = `${updatedLikes} Likes`
+              }
+            })
+          }else if(event.target.closest('i').id === "delete") {
+            let orderId = parseInt(event.target.closest('article').dataset.orderId)
+            if(event.target.closest('article').querySelector('a').innerText === modalTag.querySelector('#name-input').value) {
+              OrderAdaptor.deleteOrder(orderId).then(orderObject => {
+                if(!!orderObject) {
+                  event.target.closest('article').remove()
+                  alert("Comment Deleted")
+                }
+              })
+            } else {
+              alert("This isn't your comment")
             }
-          })
+
+          }
         }
+
       })
 
       // patch flavor function.
@@ -87,8 +119,8 @@ newModal.addEventListener('submit', function(event) {
   MuffinAdaptor.postMuffin(calorie, flavor, image_url).then(muffinObject => {
     if(!!muffinObject) {
       const muffin = new Muffin(muffinObject)
-      muffinDiv.innerHTML += muffin.render()
-      muffinDiv.innerHTML += muffin.renderModal()
+      muffinDiv.innerHTML = muffin.render() + muffinDiv.innerHTML
+      muffinDiv.innerHTML = muffin.renderModal() + muffinDiv.innerHTML
     }
   })
 })

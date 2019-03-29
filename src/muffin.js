@@ -28,7 +28,7 @@ class Muffin {
 
   renderModal() {
     return `
-    <div id="modal-full-${this.id}" data-event="false" class="uk-modal-full" uk-modal>
+    <div id="modal-full-${this.id}" data-event="false" class="uk-modal-full uk-animation-scale-up" uk-modal>
         <div class="uk-modal-dialog">
             <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
             <div class="uk-grid-collapse uk-child-width-1-2@s uk-flex-middle" uk-grid>
@@ -40,7 +40,7 @@ class Muffin {
                         <div class="uk-margin">
                           <div class="uk-inline">
                             <a class="uk-form-icon uk-form-icon-flip uk-modal-close" href="#" uk-icon="icon: pencil"></a>
-                            <input class="uk-input" name="flavor" type="text" placeholder="${this.flavor}">
+                            <input class="uk-input uk-border-rounded" name="flavor" type="text" placeholder="${this.flavor}">
                           </div>
                         </div>
                       </fieldset>
@@ -51,31 +51,18 @@ class Muffin {
                       <div class="uk-margin">
                         <div class="uk-inline">
                           <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: user"></span>
-                          <input class="uk-input" name="name" type="text" placeholder="Name">
+                          <input id="name-input" class="uk-input uk-border-rounded" name="name" type="text" placeholder="Name">
                         </div>
                       </div>
                       <div class="uk-margin">
-                        <textarea class="uk-textarea" name="review" placeholder="Review"></textarea>
+                        <textarea class="uk-textarea uk-border-rounded" name="review" placeholder="Review"></textarea>
                       </div>
-                      <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Review</button>
+                      <button class="uk-button uk-border-rounded uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Review</button>
                       </fieldset>
                     </form>
                     <section id="review-section" uk-overflow-auto></section>
                 </div>
             </div>
-        </div>
-    </div>
-    `
-  }
-
-  render1() {
-    return `
-    <div>
-        <div data-muffin-id="${this.id}" class="uk-flex uk-flex-middle uk-box-shadow-large uk-padding uk-inline-clip uk-transition-toggle">
-          <img class="uk-border-rounded" src=${this.image_url}></img>
-          <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-default">
-               <p class="uk-h4 uk-margin-remove uk-text-center">${this.flavor}</p>
-           </div>
         </div>
     </div>
     `
