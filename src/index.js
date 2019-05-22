@@ -1,6 +1,7 @@
 const muffinDiv = document.querySelector('#muffin-list')
 const newModal = document.querySelector('#new-muffin')
 const loginLi = document.querySelector('li#login')
+const randomLi = document.querySelector('li#random')
 
 // primary fetch.
 MuffinAdaptor.getMuffins().then(muffins => {
@@ -13,8 +14,13 @@ MuffinAdaptor.getMuffins().then(muffins => {
   })
 })
 
+// randomLi.addEventListener('click', function(event) {
+//   let random = Math.floor(Math.random() * Muffin.all.length)
+//   UIkit.modal(document.querySelector(`#modal-full-${random}`)).show()
+// })
+
 // login function.
-loginLi.addEventListener('click', function(event){
+loginLi.addEventListener('click', function(event) {
   const loginModal = document.querySelector('div#login')
 
   loginModal.addEventListener('submit', function(event) {
@@ -72,7 +78,6 @@ muffinDiv.addEventListener('click', function(event) {
             } else {
               alert("This isn't your comment")
             }
-
           }
         }
 
