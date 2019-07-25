@@ -1,6 +1,6 @@
 class OrderAdaptor {
   static postOrder(muffin_id, review, name) {
-    return fetch("http://localhost:3000/api/v1/orders", {
+    return fetch("hhttps://muffin-mornings-backend.herokuapp.com/api/v1/orders", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -15,7 +15,7 @@ class OrderAdaptor {
     .then(res => res.json())
   }
   static patchOrder(id, likes) {
-    return fetch(`http://localhost:3000/api/v1/orders/${id}`, {
+    return fetch(`https://muffin-mornings-backend.herokuapp.com/api/v1/orders/${id}`, {
       method: 'PATCH',
       headers: {
           'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ class OrderAdaptor {
     .then(res => res.json())
   }
   static deleteOrder(id) {
-    return fetch(`http://localhost:3000/api/v1/orders/${id}`, {method: 'DELETE'})
+    return fetch(`https://muffin-mornings-backend.herokuapp.com/api/v1/orders/${id}`, {method: 'DELETE'})
     .then(res => res.json())
   }
 }
